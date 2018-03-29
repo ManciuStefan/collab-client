@@ -5,11 +5,13 @@ import org.eclipse.swt.widgets.*;
 
 public class Home {
 	private Shell shell;
+	private Shell loginShell;
 	private String username;
 	
-	public Home(String username) {
+	public Home(String username, Shell loginShell) {
 		this.username = username;
 		this.shell = new Shell(Display.getCurrent());
+		this.loginShell = loginShell;
 	}
 	
 	public void open() {		
@@ -22,6 +24,16 @@ public class Home {
 //		layout.makeColumnsEqualWidth = true;
 		shell.setText("Collab Home");
 		shell.setLayout(layout);
+		
+		shell.addListener(SWT.Close, new Listener() 
+        { 
+           @Override 
+           public void handleEvent(Event event) 
+           { 
+              loginShell.dispose();
+              shell.dispose();
+           } 
+        }); 
 		
 		Label usernameLabel = new Label(shell, SWT.BORDER);
 		usernameLabel.setText("Salut " + this.username);

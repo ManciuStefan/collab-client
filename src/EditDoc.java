@@ -30,6 +30,16 @@ public class EditDoc {
 		shell.setText("Edit file " + this.filename);
 		shell.setLayout(layout);
 		
+		shell.addListener(SWT.Close, new Listener() 
+        { 
+           @Override 
+           public void handleEvent(Event event) 
+           { 
+        	  parentShell.setVisible(true);
+              shell.dispose();
+           } 
+        }); 
+		
 		Label fileLabel = new Label(shell, SWT.BORDER);
 		fileLabel.setText("Editing file " + this.filename);
 		GridData labelData = new GridData();

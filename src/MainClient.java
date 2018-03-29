@@ -33,7 +33,7 @@ public class MainClient {
 		login.addListener(SWT.Selection, new Listener() {
 			@Override
 			public void handleEvent(Event event) {
-				Home homeShell = new Home(username.getText());
+				Home homeShell = new Home(username.getText(), shell);
 				shell.setVisible(false);
 				homeShell.open();
 			}
